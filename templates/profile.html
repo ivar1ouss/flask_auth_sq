@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Профиль{% endblock %}
+{% block content %}
+<h2>Личный кабинет</h2>
+<p><strong>Ник:</strong> {{ user.username }}</p>
+<p><strong>Email:</strong> {{ user.email }}</p>
+<p><strong>Дата регистрации:</strong> {{ user.created_at.strftime('%d.%m.%Y %H:%M') }}</p>
+
+<form method="POST" action="{{ url_for('logout') }}" style="margin-top: 24px;">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <button type="submit" class="btn" style="background: #e74c3c;">Выйти</button>
+</form>
+{% endblock %}
